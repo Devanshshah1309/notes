@@ -223,13 +223,13 @@ $$
 Cov(X,Y) = E[(X-E(X))(Y-E(Y))] = E[XY] - E[X]E[Y]
 $$
 
-:::note
-💡 Covariance is a measure of how $X$ and $Y$ “move together” → positive covariance means that when $X > E[X]$, it is more likely for $Y > E[Y]$ as well (and vice versa).
+:::tip note
+Covariance is a measure of how $X$ and $Y$ “move together” → positive covariance means that when $X > E[X]$, it is more likely for $Y > E[Y]$ as well (and vice versa).
 
 :::
 
-:::note
-💡 It is important to note that $Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y)$. In other words, variance of the sum of 2 RVs is not additive (due to the interaction term, $2Cov(X,Y)$). More generally, $Var(aX+bY) = a^2Var(X) + b^2Var(Y) + 2abCov(X,Y)$
+:::tip note
+It is important to note that $Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y)$. In other words, variance of the sum of 2 RVs is not additive (due to the interaction term, $2Cov(X,Y)$). More generally, $Var(aX+bY) = a^2Var(X) + b^2Var(Y) + 2abCov(X,Y)$
 
 :::
 

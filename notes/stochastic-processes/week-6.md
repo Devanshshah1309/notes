@@ -29,7 +29,7 @@ _Irreducible_ → cannot be reduced further, i.e., like an “atom” of the MC
 Both the above MCs are recurrent and irreducible. Also, the average number of revisits to any state is the same (infinity) in the long run. However, the pattern for both is very different and we should discuss them separately. (we want some way to quantify how the _pattern_ is actually different).
 
 :::danger definition
-**Period**: For a state $i$, let $d(i)$ be the greatest comomon divisor of $\{n : n \geq 1, P_{ii}^{(n)} > 0 \}$. If $\{n : n \geq 1, P_{ii}^{(n)} > 0 \}$ is empty (starting from $i$, the chain will never revisit $i$), then we define $d(i) = 0$.
+**Period**: For a state $i$, let $d(i)$ be the greatest common divisor of $\{n : n \geq 1, P_{ii}^{(n)} > 0 \}$. If $\{n : n \geq 1, P_{ii}^{(n)} > 0 \}$ is empty (starting from $i$, the chain will never revisit $i$), then we define $d(i) = 0$.
 
 We call $d(i)$ the period of state $i.$
 
