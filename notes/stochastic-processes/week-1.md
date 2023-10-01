@@ -10,7 +10,12 @@ Stochastic processes deal with modeling a series of actions/steps (with a certai
 
 **Proeess**: a series of actions or steps in order to achieve a particular end.
 
-**Stochastic**: we have some randomness (i.e., uncertainty - which is measured using probabiilty) in each action of this process. e.g. in the snakes and ladder game, we don’t know how many steeps we should walk for each action, and the final path is not definite (in fact, we don’t even know how many steps we need to take - if we’re unlucky, we might never reach the goal even after taking $\infty$ steps.
+**Stochastic**: we have some randomness (i.e., uncertainty - which is measured using probabiilty) in each action of this process. e.g. in the snakes and ladder game, we don’t know how many steps we should walk for each action, and the final path is not definite (in fact, we don’t even know how many steps we need to take - if we’re unlucky, we might not reach the goal even after taking 1000 steps.
+
+:::info
+However, we can say that the probability that we evenutally reach the final square (100) in the snakes and ladder game approaches 1 as we play for a longer time. In other words, we are ["almost sure"](https://en.wikipedia.org/wiki/Almost_surely) to reach the final square in the long run. This is an example of a "convergence" property of stochastic processes.
+
+:::
 
 ### Stochastic Process vs. Random Variables
 
@@ -35,7 +40,9 @@ A stochastic process is a mapping from $\Omega \to \mathbb{R}^N$. In particular,
 :::tip think 🤔
 Q. In snakes and ladders, isn’t the probability of each path equal to the product of the probabilities of each action (since dice rolls are independent in every turn)? And this would be a finite number right? And there are $\infty$ such paths so wouldn’t that mean that the sum of probabilities of all paths is greater than one?
 
-Ans: It is correct that the probability of each path is finite and that there are infinite paths - but note that as the length of a path increases, it’s probability increases (this means that longer paths are less likely to occur). So, although there are infinite paths (think of infinite terms in a series), they converge to a single value (which must be $1$ since it must form a valid probability function).
+Ans: It is correct that the probability of each path is finite and that there are infinite paths - but note that as the length of a path increases, it’s probability decreases (this means that longer paths are less likely to occur). So, although there are infinite paths (think of infinite terms in a series), they converge to a single value (which must be $1$ since it must form a valid probability function).
+
+Also, it's important to remember that we need to consider a "disjoint" set of paths, for the sum of their probabilities to equal 1. E.g. if we consider all paths of length 2 (or any fixed finite length $k$ for that matter, they are disjoint - none of the paths are "sub-paths" of each other. However, if we consider the set of "all possible paths", obviously they are not disjoint - in particular, all paths of length $1$ are sub-paths of all paths of length $2$ (and so on). Hence, we cannot simply add the probabilities of all paths and exepct it to be 1.
 
 :::
 
@@ -44,7 +51,7 @@ Read more about convergence tests for series [here](https://en.wikipedia.org/wik
 
 :::
 
-Also in general, we don’t care so much about a single “path” rather than a set of paths (which is basically defined by an event). e.g. the set of paths which take at least one snake, the set of paths which reach the last square in 15 steps, etc. This is similar to the case of continuous random variable → we can never assign a probability measure for $P(X=a)$ when $X$ is a continuous random variable because $X$ can take on infinite number of value - so we look at a range $P(a < X < b)$.
+Also in general, we don’t care so much about a single “path” rather than a set of paths (which is basically defined by an event). e.g. the set of paths which take at least one snake, the set of paths which reach the last square in 15 steps, etc. This is similar to the case of continuous random variable → we can never assign a probability measure for $P(X=a)$ when $X$ is a continuous random variable because $X$ can take on infinite number of value - so we look at a range $P(a < X < b)$ (and consider the limit as the size of the interval $(a, b)$ shrinks to zero whilst still always containing our point of interest).
 
 ### Why do we care about Stochastic Processes?
 
@@ -62,12 +69,12 @@ Also, modelling any problem/situation as a stochastic process helps us answer im
 - Short-term questions:
   - After $n$ steps, what will be the distribution of $X$?
   - How does the distribution of $X_n$ (after $n$ steps) rely on the initial state $X_0$?
-- Strategy related questions (called so since they relate to states/paths, which we can analyze to come up with a “winning” strategy to a problem/game → based on some rules - e.g. in poker, if I ever reach the state “royal flush”, I will immediately go all in - we can update our strategy):
+- Strategy related questions (called so since they relate to states/paths, which we can analyze to come up with a “winning” strategy to a problem/game → based on some rules - e.g. in poker, if I ever reach the state “royal flush”, I will immediately go all in - we can update our strategy when we reach a certain state or meet a certain condition):
   - Is it possible that a given state $i$ can be visited in the long run? If yes, what is the probability?
   - If the probability of visiting a state $i$ is $1$, what will be the expected time to arrive at this state?
   - What will be the probability that state $j$ is visited before state $i$?
 - Performance in the long run:
-  - Will there be a “stable” calculation on states in the long run?
+  - Will there be a “stable” distribution on states in the long run?
   - What are the necessary/sufficient conditions to achieve this distribution?
   - How to calculate it?
 
@@ -89,7 +96,7 @@ Consider a random variable $X$ (note that $X$ is a function that maps every outc
 
 A discrete random variable can be specified by defining the probability on each value, i.e., specifying $p_x = P(X = x)$ for all values of $x$. This is called the probability distribution of $X$.
 
-Note that once we have the probability distribution of a random variable, we don’t need anything else - not even a definition for it - to work with it. A definition could be something like: “the minimum number when 2 die are rolled”. In other words, a probability distribution of a random variable _completely_ specifies all properties of $X$. (though obviously we prefer to have some definitions for random variables, which relate to the problem we’re trying to solve - unless you’re a maniac who’s just aimlessly analyzing random variables)
+Note that once we have the probability distribution of a random variable, we don’t need anything else - not even a definition for it - to work with it. A definition could be something like: “the minimum number when 2 die are rolled”. In other words, a probability distribution of a random variable _completely_ specifies all properties of $X$. (though obviously we prefer to have some definitions for random variables, which relate to the problem we’re trying to solve, so that we can think about what each of the random variables "mean" in our head - unless you’re a maniac who’s just aimlessly analyzing random variables)
 
 If we have a function $p(x)$ that satisfies:
 
