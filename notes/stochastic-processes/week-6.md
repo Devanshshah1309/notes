@@ -78,7 +78,7 @@ How can we interpret the above statements?
 
 ### Aperiodic MC
 
-**Note**: Consider an irreducible MC (only one class $\implies$all states have same period, $d$). Then, we can say that $*d$ is the period of this MC*. If $d=1$, then all states are aperiodic, and we say that *this MC is aperiodic\*.
+**Note**: Consider an irreducible MC (only one class $\implies$all states have same period, $d$). Then, we can say that _$d$ is the period of this MC_. If $d=1$, then all states are aperiodic, and we say that _this MC is aperiodic_.
 
 Let’s apply the theorem on periodicity to an aperiodic MC, i.e., $d=1$.
 
@@ -224,7 +224,7 @@ Note:
 
 Okay, but how do we _really_ interpret $\pi_j$? There are many different (and all correct) interpretations of $\pi$ (depending on what we’re considering).
 
-$**\pi_j$ is the (marginal) probability that the MC is in state $j$ for the long run.\** We say “marginal” because it is not conditioned on the original/initial state and also not conditioned on the time (exact value of $n$). It simply means that if we leave the MC alone for a long time, and then come back to observe it, there is a $\pi_j$ probability that the MC is in state $j$ when we observe it, *regardless of how it was when we left, and regardless of the exact number of steps the MC took in the time we were gone.\*
+$**\pi_j$ is the (marginal) probability that the MC is in state $j$ for the long run. We say “marginal” because it is not conditioned on the original/initial state and also not conditioned on the time (exact value of $n$). It simply means that if we leave the MC alone for a long time, and then come back to observe it, there is a $\pi_j$ probability that the MC is in state $j$ when we observe it, regardless of how it was when we left, and regardless of the exact number of steps the MC took in the time we were gone.
 
 :::tip intuition
 An intuitive way to look at this is to see if there is any “difference” in times even in the long run. For example, for the simple random walk problem: If we start from an even state, the probability that the process is at an odd state is $0$ at even time points, and the probability that the process is at an even state is at odd time points (_even in the long run_). So, the long-run distribution depends on the time point we’re considering. Hence, it’s not a regular MC because there’s no “limiting distribution”.
@@ -249,7 +249,7 @@ $$
 P(X_n=j) = \sum_{i=1}^N \pi_j P(X_0=i) = \pi_j \sum_{i=1}^N P(X_0=i) = \pi_j
 $$
 
-Moreover, $**\pi$ gives the limit of $P^n$\*\* (simply based on our definitions and understanding). Since $\pi_k$ is the probability that the process ends up in state $k$ in the long run, we expect all the entries of the $k$th column of $P^n$ (as $n \to \infty$) to be equal to $\pi_k$ (why? because every entry ($i, j$) in $P^n$ represents precisely the probability of landing at state $j$ if we start at state $i$, after $n$ steps).
+Moreover, $\pi$ gives the limit of $P^n$ (simply based on our definitions and understanding). Since $\pi_k$ is the probability that the process ends up in state $k$ in the long run, we expect all the entries of the $k$th column of $P^n$ (as $n \to \infty$) to be equal to $\pi_k$ (why? because every entry ($i, j$) in $P^n$ represents precisely the probability of landing at state $j$ if we start at state $i$, after $n$ steps).
 
 We can write this as:
 
@@ -268,7 +268,7 @@ $$
 
 Every row is the same, as $\pi$. Interpretation? The $i$th row of $P^n$ is the distribution of $X_n$ given $X_0=i$. If the distribution of $X_n$ converges to the same distribution $\pi$ regardless of $X_0$, then every row must converge to $\pi$.
 
-$**\pi$ can be seen as the long run proportion of time in every state.\*\* But what do we even mean by “long run proportion of time”. Let’s define it formally.
+$\pi$ can be seen as the long run proportion of time in every state. But what do we even mean by “long run proportion of time”. Let’s define it formally.
 
 Define the indicator function of $X_k$ to be:
 
