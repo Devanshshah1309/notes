@@ -103,7 +103,7 @@ A famous result is:
 
 It comes from the result that
 
-- For 2-dimension symmetric random walk, the probability that the walker can arrive at $S$ (maybe his home?) is $1$
+- For 2-dimension symmetric random walk, the probability that the walker can arrive at $S$ (maybe his home?) is $1$ (assuming an infnite 2D plane, the walker almost surely reaches his home → read [this](https://en.wikipedia.org/wiki/Almost_surely) for a more mathematical definition of “almost surely” → it’s super interesting 🎊)
 - For any dimension > 2, the probability that the walker arrives at $S$ is < 1.
 
 It’s a good exercise to try and prove the above result.
