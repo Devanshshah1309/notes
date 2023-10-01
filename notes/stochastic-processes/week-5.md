@@ -280,7 +280,8 @@ For a state $i$, consider the expected number of visits to $i$, $E[N_i|X_0=i]$, 
 
 1. If $f_{ii} < 1$ (i.e,. $i$ is transient), there is $E[N_i|X_0=i] = \dfrac{f_{ii}}{1-f_{ii}}$
 2. If $f_{ii} = 1$ (i.e,. $i$ is transient), there is $E[N_i|X_0=i] = \infty$
-   :::
+
+:::
 
 If we can prove the above theorem, we can conclude that both definitions of “recurrent”/”transient” (using $f_{ii}$ and using $N_i$) are equivalent.
 

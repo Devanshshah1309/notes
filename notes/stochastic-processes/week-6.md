@@ -17,6 +17,7 @@ Consider only one recurrent class. Restricted on this recurrent class, we can bu
 
 :::tip intuition
 _Reducible_ → We can “reduce” the size of the transition matrix by “reducing” the number of “states” (by clustering those in the same recurrent class together)
+
 _Irreducible_ → cannot be reduced further, i.e., like an “atom” of the MC
 
 :::
@@ -64,7 +65,7 @@ We can generalize this using a theorem.
 
 For a MC, let $d(i)$ be the period of state $i$, then:
 
-1. If $i$ and $j$ can communicate, $d(i)=d(j)$
+1. If $i$ and $j$ can communicate, $d(i)=d(j)$ (read the proof [here](https://math.stackexchange.com/questions/112057/show-that-two-states-in-the-same-communicating-class-of-a-markov-chain-must-have))
 2. There is an $N$ such that $P_{ii}^{(N *d(i))} > 0$, and for any $n \geq N$, $P_{ii}^{(n *d(i))} > 0$
 3. There is $m > 0$ such that $P_{ji}^{(m)} > 0$, and when $n$ is sufficiently large, we have $P_{ji}^{(m + nd(i))} > 0$
 
