@@ -8,20 +8,32 @@ import styles from "./index.module.css";
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/notes/intro"
-          >
-            View Notes
-          </Link>
+    <>
+      <header className={clsx("hero hero--primary", styles.heroBanner)}>
+        <div className="container">
+          <h1 className="hero__title">{siteConfig.title}</h1>
+          <div className={styles.buttons}>
+            <Link
+              className="button button--secondary button--lg"
+              to="/notes/intro"
+            >
+              View Notes
+            </Link>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+      <center style={{ padding: "2rem" }}>
+        <h2 className="hero__subtitle">Contributions Welcome!</h2>
+        <p>
+          If you find any mistakes or would like to contribute, please feel free
+          to open an issue or a pull request on{" "}
+          <a href="https://github.com/Devanshshah1309/notes" target="_blank">
+            GitHub
+          </a>
+          .
+        </p>
+      </center>
+    </>
   );
 }
 
@@ -29,8 +41,8 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      title={`${siteConfig.title}`}
+      description="Public Knowledge Repository of Notes for University Courses"
     >
       <HomepageHeader />
     </Layout>
