@@ -4,11 +4,11 @@ sidebar_position: 5
 
 # Generalising First-Step Analysis
 
-In the previous week, we were able to answer specific strategy-related questions about a specific instance of the gambler’s ruin problem. But we don’t want to perform the analysis each time we’re given a different example (i.e,. different parameters, or initial conditions): so, can we come up with a more general solution?
+In the previous week, we were able to answer specific strategy-related questions about a specific instance of the gambler’s ruin problem. But we don’t want to perform the analysis each time we’re given a different example (i.e., different parameters, or initial conditions): so, can we come up with a more general solution?
 
 Recall that for all the 3 questions, we have a quantity of interest, usually related to the stopping time $T$ and initial state $X_0=i$.
 
-We can express all the 3 equations (and more) to be of the form:
+We can express all the 3 quantities of interest (and more) to be of the general form:
 
 $$
 a_i = E[\sum_{n=0}^T g(X_n)|X_0=i]
@@ -23,7 +23,7 @@ $$
 P(X_T=j|X_0=i) = E[I_j(X_T=j)|X_0=i]
 $$
 
-We can also write it as the following (because we know that $T$ is the stopping time and the indicator value will always be $0$ for all values of $n < T$ since otherwise, it would contradict the definition of $T$
+We can also write it as the following (because we know that $T$ is the stopping time and the indicator value will always be $0$ for all values of $n < T$ since otherwise, it would contradict the definition of $T$):
 
 $$
 P(X_T=j|X_0=i) = E[\sum_{n=0}^T I_j(X_n=j)|X_0=i]
@@ -37,11 +37,11 @@ The above equations can be thought of as a sort of random sum (since the number 
 
 So, if we’re intersted in the quantity $a_i = E[\sum_{n=0}^T g(X_n)|X_0=i]$, we can use the following steps:
 
-1. Define $|S|$ terms $a_i = E[\sum_{n=0}^T g(X_n)|X_0=i]$ for each $i \in S$ (not just the particular $a_i$ that we care about, but ALL of them → since we need ALL of the rest of the values to find any particular value - using a system of linear equations)
+1. Define $|S|$ terms $a_i = E[\sum_{n=0}^T g(X_n)|X_0=i]$ for each $i \in S$ (not just the particular $a_i$ that we care about, but ALL of them → since we need ALL of the rest of the values to find any particular value - by solving a system of linear equations)
 2. Then, apply the law of total expectation to $a_i$, conditional on $X_1$:
 
    $$
-   a_i= \sum_{k \in S}\left (\left( g(i) + E[\sum_{n=1}^T g(X_n)|X_0=i, X_1=k] \right)P(X_1=k|X_0=i) \right)
+   a_i= \sum_{k \in S}\left (\left( g(i) + E\left [\sum_{n=1}^T g(X_n)|X_0=i, X_1=k \right ] \right)P(X_1=k|X_0=i) \right)
    $$
 
    That is, we look at all possible steps we can take in the first move and calculate accordingly → one-step transition (we consider the transition from $i \to k$ (for every possible value of $k$) when trying to calculate $a_i$). Notice that when we reach state $k$, the time $t=1$ so the sum is from $\sum_{n=1}^T$.
@@ -52,7 +52,7 @@ So, if we’re intersted in the quantity $a_i = E[\sum_{n=0}^T g(X_n)|X_0=i]$, w
 4. Consider the process $\{Y_n\}$ defined to be $Y_n=X_{n+1}$. It is stochastically equivalent (same probabilistic structure, only differing in the time at which they start) with $\{X_n\}$. Further by Markovian property,
 
    $$
-   E\left[\sum_{n=0}^T g(X_n)|X_0=i,X_1=k\right] = E\left[\sum_{n=0}^{T_Y}g(Y_n)|Y_0=k \right] = a_k
+   E\left[\sum_{n=1}^T g(X_n)|X_0=i,X_1=k\right] = E\left[\sum_{n=0}^{T_Y}g(Y_n)|Y_0=k \right] = a_k
    $$
 
 5. Combining our results from step (3) and (4) and inserting it into the equation in step (2), we get:
@@ -110,7 +110,7 @@ $$
 We can easily solve the above system.
 
 :::info
-Notice that for the absorbing states, i.e., $0$ or $4$, the gambler stops the game at $i=0$. So, the number of times he passes through 2 if he starts at 0 or 4 is 0. These are the boundary cases (base cases).
+Notice that for the absorbing states, i.e., $0$ or $4$, the gambler stops the game at $t=0$ (doesn't even play any games). So, the number of times he passes through $2$ if he starts at $0$ or $4$ is $0$. These are the boundary cases (base cases).
 
 :::
 

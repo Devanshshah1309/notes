@@ -15,11 +15,11 @@ Then, we’re interested to know:
 1. **What is the probability that he will go broke? (and, as a consequence, what is the probability that he has $N$ dollars at the end?)**
 2. **How many rounds will he play before the game ends?**
 
-:::info
-💡 The gambler’s ruin “process” is also more generally referred to as a “random walk” (where there is a probability of walking 1 step left/right at any state, and we stop walking when we reach either of the 2 points on the left/right end). A random walk can also be considered in 2-D (which becomes slightly more complicated but the idea still holds) or even $n$-D.
+:::tip note
+The gambler’s ruin “process” is also more generally referred to as a “random walk” (where there is a probability of walking 1 step left/right at any state, and we stop walking when we reach either of the 2 points on the left/right end). A random walk can also be considered in 2-D (which becomes slightly more complicated but the idea still holds) or even $n$-D 😲
 :::
 
-### Question 1
+### Probability of Going Broke
 
 Let’s deal with the first question first.
 
@@ -34,7 +34,7 @@ $$
 According to first-step analysis, we have:
 
 $$
-u_k = I\{k=0\} + \sum_{j=0}^N \mu_jP(X_1=j|X_0=k]
+u_k = I\{k=0\} + \sum_{j=0}^N \mu_jP(X_1=j|X_0=k)
 $$
 
 So, when $k=0$, this expression can be simplified to: $u_0=1$ (since the indicator function is “on” and the probability of escaping the “broke” state is $0$). Also, for $k=N$, this becomes: $u_k=0$ (indicator is “off” and the game is over)
@@ -42,7 +42,7 @@ So, when $k=0$, this expression can be simplified to: $u_0=1$ (since the indicat
 For all other values of $k$, we have:
 
 $$
-u_k = \sum_{j=0}^N \mu_jP(X_1=j|X_0=k] = p u_{k+1} + qu_{k-1}
+u_k = \sum_{j=0}^N \mu_jP(X_1=j|X_0=k) = p u_{k+1} + qu_{k-1}
 $$
 
 Put in words, this is because we have probablility $p$ of going from state $k \to k+1$ and probability $q$ of going from $k \to k-1$. Remember that this is only true for non-absorbing states.
@@ -174,7 +174,7 @@ How do we interpret this result:
 
 ---
 
-### Question 2
+### Expected Number of Games Played
 
 Recall that we’re trying to find out the average number of games the gambler will play before he reaches $N$ or $0$ (i.e,. before he “gets absorbed”).
 

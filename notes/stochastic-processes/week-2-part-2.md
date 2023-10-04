@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # First-Step Analysis
 
-## Example
+### Example
 
 ![Untitled](week-2-part-2-assets/Untitled.png)
 
@@ -92,8 +92,6 @@ Let $T$ denote the time that the gambler quits or goes broke. Then, we’re inte
 
 How do we solve this? Can’t we just find $P^T$ ($T$-step transition matrix) and look at $P^T(3,0)$ to find out the probability of going broke at time $T$? (i.e., can we use the same method we used to answer short-term questions with a fixed time here?)
 
-No! $~~P^T(3,0)$ will give you the probability that the gambler is “in broke state” at time $T$, but this does NOT mean that he “went broke” at time $T$. He could’ve gone broke much earlier (and since $P(0,0) =1$ , he will remain in broke state forever after that).~~ (this is not true, because we’re defining $T$ to be the exact time when he goes broke)
-
 No! We don’t know what $T$ is so how can we find $P^T$?? More formally, $T$ itself is a random variable (we don’t know when he will go broke, and so calculating $P^T$ is not possible)
 
 Okay, so what else can we do?
@@ -110,15 +108,19 @@ Though the above equation is mathematically true, the second term of the product
 
 Okay, so we can’t answer strategy-related questions (like those above) with the techinques we’ve learnt so far.
 
-By the strategy. (i.e. the gambler’s own rule that he stops after he goes broke or wins $2N$), there is some “stopping time” of the process. (For a general process, there may not be a “strategy”, but they still have some kind of stopping time)
+By the strategy (i.e. the gambler’s own rule that he stops after he goes broke or wins $2N$), there is some “stopping time” of the process. (For a general process, there may not be such an explicit “strategy”, but they may still have some kind of stopping time)
 
 Let’s define some terms that will help us to answer these strategy-related questions:
 
+:::danger definition
 **Absorbing state**: If a state $i$ satisfies $p_{ij}=0$ for all $j\neq i$, then it is called an absorbing state (i.e., once you reach state $i$, you cannot ever “escape” from it, and $p_{i,i}=1$)
+:::
 
 For the gambler’s ruin problem, $i=0$ and $i=4$ are both absorbing states (based on our definition of the quitting rules).
 
+:::danger definition
 **Stopping time**: Let $T=min\{n\geq 0 : X_n=i\}$ then $T$ is a stopping time. What this means is simply the first time that we reach any absorption state (i.e., the time we get absorbed). For the gambler’s ruin, the quitting time is a stopping time, where we set $i=\{0,4\}$
+:::
 
 Now, we perform first-step analysis.
 
@@ -162,7 +164,7 @@ $$
 P(X_T=0|X_0=3) = p_{32}P(X_T=0|X_0=2)+p_{34}P(X_T=0|X_0=4)
 $$
 
-(notice the only difference between this and the equation we wrote earlier is that we changed the condition to be on $X_0$ instead of $X_1$.
+Notice the only difference between this and the equation we wrote earlier is that we changed the condition to be on $X_0$ instead of $X_1$.
 
 All the unknown terms are in the form $P(X_T=0|X_0=i)$. So, for notation’s sake, we define $u_i = P(X_T=0|X_0=i)$.
 
@@ -190,13 +192,17 @@ u_4 &= 0
 \end{equation*}
 $$
 
-We have a linear system with 5 equaitons and 5 unknown parameters, we can solve this (programmatically at least). After solving, we get:
+We have a linear system with 5 equaitons and 5 unknown parameters, we can solve this quite easily (programmatically at least). After solving, we get:
 
 $$
 u_0=1, u_1=\frac{14}{15},u_2=\frac{12}{15},u_3=\frac{8}{15},u_4=0
 $$
 
 Our required answer is: $u_3 = P(X_T=0|X_0=3)=\dfrac{8}{15}$
+
+---
+
+### Summary of FSA
 
 Summary of what we did in first-step analysis:
 
@@ -217,6 +223,8 @@ Similarly, we’re also interested in finding the probability of being absorbed 
 2. **Based on results already obtained**: We already know that the probability of going broke when starting with $X_0=3$ is $8/15$. We claim (prove in next lecture) that the Markov Chain will be absorbed with probability $1$ (for sure, as time goes to infinity, the probability of getting absorbed tends to $1$). Since the only absorbing states are $\{0,4\}$, the probability of being absorbed at state $4$ (”winning” the game) is equal to $1-P(X_T=0|X_0=3) = 7/15$
 
 Okay. We’ve answered the first two questions: what is the probability that the gambler goes broke and what is the probability that the gambler wins 4 dollars and quits.
+
+### Expected Number of Games Played
 
 We’re still left with the last question: what is the expected number of games the gambler plays before he goes quits? (Here, quits can be because he went broke or he got 4 dollars and quits)
 
@@ -258,20 +266,19 @@ Now we need to relate $E[T|X_1=i]$ with $E[T|X_0=i]$. This is quite intuitive: s
 
 That is, $E[T|X_1=i] = E[T|X_0=i] + 1$
 
-(Think of defining a new process $Y_n = X_{n+1}$. Then $Y$ will stop 1 time unit before $X$ in all possible scenarios since $Y$ “leads” $X$. In the same way, the above equation simply means that if I expected the game to end at $T=10$ when you started off with $X_0= 3$ dollars, I will expect the game to end at $T=12$ if you still have 3 dollars at $T=2$. Why? Because I expect the game to follow the same trajectory as I had expected from $T=0$ to $T=10$, only now that I think of it from $T=2$ to $T=12$
+Think of defining a new process $Y_n = X_{n+1}$. Then $Y$ will stop 1 time unit before $X$ in all possible scenarios since $Y$ “leads” $X$. In the same way, the above equation simply means that if I expected the game to end at $T=10$ when you started off with $X_0= 3$ dollars, I will expect the game to end at $T=12$ if you still have 3 dollars at $T=2$. Why? Because I expect the game to follow the same trajectory as I had expected from $T=0$ to $T=10$, only now I think of it from $T=2$ to $T=12$
 
-:::info
-💡 It might be easier to think of it as this: If $w_i$ is the expected number of games that the gambler plays from state $i$ before he quits, $w_i$ is independent of the time. It only depends on $i$. So, if he has 3 dollars now and we expect him to play 4 more games before quitting, we should expect him to play 4 more games before quitting EVERY TIME he reaches a state where he has 3 dollars.
-
-:::
-
-:::info
-⚠️ Here, $T$ is the stopping time of the overall process → NOT the “extra” time taken to reach absorption state from a given state (though it’s much easier to solve problems by using this method instead)
+:::info intuition
+It might be easier to think of it as this: If $w_i$ is the expected number of games that the gambler plays from state $i$ before he quits, $w_i$ is independent of the time. It only depends on $i$. So, if he has 3 dollars now and we expect him to play 4 more games before quitting, we should expect him to play 4 more games before quitting EVERY TIME he reaches a state where he has 3 dollars.
 
 :::
 
-:::info
-⚠️ Key intuitions:
+:::caution
+Here, $T$ is the stopping time of the overall process → NOT the “extra” time taken to reach absorption state from a given state (though it’s much easier to solve problems by using this method instead)
+
+:::
+
+:::tip key points
 
 1. The probability of getting absorbed at a particular state $i$ given you’re a state $j$ ONLY depends on the state $j$ and not the time. (we’ve already proved this)
 2. The expected _remaining_ time before you get absorbed at state $i$ given you’re currently at state $j$ again only depends on the state $j$ and not the time (to be proved)
@@ -328,9 +335,12 @@ $$
 
 (It’s nearly identical to the linear system consisting of $u_i$’s)
 
-:::info
-⚠️ Observe the difference between the above equation, and the equation for probability of getting absorbed at a particular state → it’s of the same form except for the extra “1” on the RHS → this is a result of counting that first step itself towards the stopping time, but this doesn’t change the probability in any way.
+:::tip think
+Observe the difference between the above equations, and the equations for finding the probability of going broke → it’s of the same form except for the extra “1” on the RHS → this is a result of counting every step that we take (since we're interested in the total number of games we played).
+:::
 
+:::tip note
+Notice that $v_0 = 0 = v_4$. In particular, it is not equal to $1$. Handle the "edge cases" properly → the stopping time is defined as the the minimum time when we reach an absorbing state. So, if we start from an absorbing time, the stopping time is $0$, NOT $1$.
 :::
 
 We’ve succesfully answered all the 3 questions that we were interested in! But..
