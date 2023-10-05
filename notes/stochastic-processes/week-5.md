@@ -6,16 +6,16 @@ sidebar_position: 8
 
 Recall that in the beginning, we described 4 types of problems/questions that we’re interested in solving:
 
-1. Short-term questions (e.g. distribution of $X_n$ for any fixed $n$) → can be solved using Chapman-Kolmogorov Equation)
+1. Short-term questions (e.g. distribution of $X_n$ for any fixed $n$) → can be solved using Chapman-Kolmogorov Equation
 2. Strategy-related questions (e.g. probability of being absorbed at a given absorption state, expected time to absorption, expected number of visits through a state, etc.) → solved using first step analysis
 3. Long-run performance (e.g. when $n \to \infty$, what can we claim about $X_n$?)
 4. Extensions
 
 Now, we’re focusing on long-run performance questions.
 
-Consider the gambler’s ruin example. We know that there are 2 absorption states: $0$ and $N$ (once we reach either of these states, we never leave, i.e,. the process (effectively) stops and we’re done).
+Consider the gambler’s ruin example. We know that there are 2 absorption states: $0$ and $N$ (once we reach either of these states, we never leave, i.e., the process (effectively) stops and we’re done).
 
-We’re interested in knowing whether $X_n$ _always_ achieves $0$ or $N$? Or is there a probability that the gambler will continue playing for infinite time and never go broke or reach $N$ dollars? What about the case when there is only one absorbing state $0$ (i.e,. “greedy” gambler scenario who does not set _any_ quitting rule for himself)?
+We’re interested in knowing whether $X_n$ _always_ achieves $0$ or $N$? Or is there a probability that the gambler will continue playing for infinite time and never go broke or reach $N$ dollars? What about the case when there is only one absorbing state $0$ (i.e., “greedy” gambler scenario who does not set _any_ quitting rule for himself)?
 
 More generally, we see that there are 2 “kinds” of states for the gambler’s ruin problem:
 
@@ -58,7 +58,7 @@ If two states $i$ and $j$ are accessible from each other, i.e., $i \to j$ and $j
 
 “Communicate” basically means that both the states can “send information to each other”. In such a case, we regard $i$ and $j$ to be in the same “**communication class”**.
 
-Imagine you put some “information” in state $i$, then that information can “flow” to all states that are accessible from $i$. Similarly, if there is “information” in 2 states $i$ and $j$ and they’re in the same communication class, this information can be exchanged between the states over time, i.e,. they can communicate with each other.
+Imagine you put some “information” in state $i$, then that information can “flow” to all states that are accessible from $i$. Similarly, if there is “information” in 2 states $i$ and $j$ and they’re in the same communication class, this information can be exchanged between the states over time, i.e., they can communicate with each other.
 
 :::tip note
 From a computer science (or graph theory) perspective, we can say that the two nodes are “strongly connected”.
@@ -74,7 +74,7 @@ Communication classes form a partition of all the states → they are mutually d
 So far it seems okay, but it’s still not clear _why_ we care about communication classes. What’s the point of dividng the states by “communication”?
 
 :::tip note
-Communication is an equivalence relation, i.e,.
+Communication is an equivalence relation, i.e.,
 
 1. Reflexive: $i \longleftrightarrow j$ ($P_{ii}^{(0)} = 1 > 0$ for any $i$, given that you’re at $i$,in $0$ steps, you are sure to remain at $i$)
 2. Symmetric: $i \longleftrightarrow j \implies j \longleftrightarrow i$ (by definition)
@@ -97,11 +97,11 @@ Intuitively, we can see that in the above diagram, all the “flow” will be pu
 Let’s define another term now:
 
 :::danger definition
-**Reducible Chain**: An MC is _irreducible_ if ALL the states communicate with one another (i.e,. there is a single communication class). Otherwise, the chain is said to be _reducible_ (more than one communication class).
+**Reducible Chain**: An MC is _irreducible_ if ALL the states communicate with one another (i.e., there is a single communication class). Otherwise, the chain is said to be _reducible_ (more than one communication class).
 
 :::
 
-Why “reducible”? Because instead of focusing on each state, we can “reduce” the MC to its communication classes and deal with the “flow” between classes first, and then look into each class (separately). This is possible only because the communication classes (by defn.) are “isolated” from each other in some sense.
+Why “reducible”? Because instead of focusing on each state, we can “reduce” the MC to its communication classes and deal with the “flow” between classes first, and then look into each class (separately). In particular, we can _reduce_ the dimension of the transition probability matrix while we're performing FSA if we're only interested in finding out which classes the process enters. This is possible only because the communication classes (by defn.) are “isolated” from each other in some sense.
 
 Note that an irrdeucible MC can have finite states, or infinitely many states. More generally, a communication class can have a finite or infinite number of states.
 
@@ -144,7 +144,9 @@ If $P_{ii}^{(n)} \to 0$ when $n \to \infty$, then the state $i$ is transient.
 
 What this means is that “in the long run”, it is unlikely that the system ever returns to state $i$.
 
-In general, it’s quite difficult to calculate $P_{ii}^{(n)}$ because there are many “kinds” of paths (as mentioned above). So, we can further narrow this to define a term “_first_ return probability” → the probability that we return back to the state for the first time at $X_n$.
+We can calculate $P_{ii}^{(n)}$ quite simply by raising the transition matrix to the $n$th power (using Chapman-Kolmogorov equation). But the problem here is that we're more interested in finding out the distribution as $n \to \infty$ and whether or not the process ever returns back to the state. For this purpose, $P_{ii}^{(n)}$ is not very good because it cannot measure the probability that the process revisits $i$ in the long run (we can't just sum up all the $P_{ii}^{(n)}$'s under the limit $n \to \infty$ because they're not disjoint events).
+
+So, we can further narrow this to define a term “_first_ return probability” → the probability that we return back to the state for the first time at $X_n$.
 
 :::danger definition
 **First Return Probability**: For any state $i$, define the probability that starting from state $i$, the first return to $i$ is at the $n$th transition.
@@ -278,8 +280,8 @@ $$
 
 For a state $i$, consider the expected number of visits to $i$, $E[N_i|X_0=i]$, then:
 
-1. If $f_{ii} < 1$ (i.e,. $i$ is transient), there is $E[N_i|X_0=i] = \dfrac{f_{ii}}{1-f_{ii}}$
-2. If $f_{ii} = 1$ (i.e,. $i$ is transient), there is $E[N_i|X_0=i] = \infty$
+1. If $f_{ii} < 1$ (i.e., $i$ is transient), there is $E[N_i|X_0=i] = \dfrac{f_{ii}}{1-f_{ii}}$
+2. If $f_{ii} = 1$ (i.e., $i$ is transient), there is $E[N_i|X_0=i] = \infty$
 
 :::
 
@@ -349,7 +351,7 @@ Hence, we’ve proved both cases (transient + recurrent) of the theorem. 🪦
 **Remarks on the theorem**:
 
 1. This theorem sets the theoretical evidence for the definition of recurrent/transient states.
-2. For transient states, the expected number of revisits increases when $f_{ii}$ increases. However, eventually, we will leave $i$ never to return, i.e,. we will never revisit $i$ again in the long run.
+2. For transient states, the expected number of revisits increases when $f_{ii}$ increases. However, eventually, we will leave $i$ never to return, i.e., we will never revisit $i$ again in the long run.
 3. For recurrent states, the expected number of revisits is infinite, which means that the process revisits it again and again (forever) in the long run (there is no possibility of never visiting it in the future)
 
 ---
@@ -545,6 +547,6 @@ P(X_n \in C_A|X_0=5) \to 0.6, \quad  P_{53}^{(n)} \to 0.4, \quad P_{54}^{(n)} \t
 $$
 
 :::tip note
-Even for the states in the same transient class, the long-run probabilities for entering the different absorbing classes will be different, so we cannot “merge” them (i.e., we cannot treat them to be the “same”).
+Even when considering states in the same transient class as being the initial states, the long-run probabilities for entering the different absorbing classes will be different, so we cannot “merge” them (i.e., we cannot treat them to be the “same”). In other words, the probabilities for entering the different absorbing classes will be different depending on which transient state we start from, _even if the initial states from the same communication (transient) class_. Hence, the probability of entering the different absorption classes is a function of the _initial state_, NOT the _initial class_.
 
 :::

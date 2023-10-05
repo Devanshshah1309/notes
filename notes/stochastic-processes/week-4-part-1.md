@@ -127,7 +127,7 @@ $$
 How can we interpret this result?
 
 1. When $k$ increases (that is, when we have more money to start with), the probability of going broke is smaller (for a fixed value of $N$)
-2. When $N \to \infty$ (the gambler sets no bound on when he will stop, i.e,. he will only stop when he goes broke), the probability of going broke converges to $1$ _even if the game is fair_. This means that if we never stop, we will go broke eventually (this is why it’s called the gambler’s “ruin” - because it’s very difficult to quit when you’re winning, you are doomed to go broke and this is one of the reasons the casinos win → they have virtually unlimited cash compared to you so it’s more likely for you to go broke before the casino goes broke, _even if the game is fair_)
+2. When $N \to \infty$ (the gambler sets no bound on when he will stop, i.e., he will only stop when he goes broke), the probability of going broke converges to $1$ _even if the game is fair_. This means that if we never stop, we will go broke eventually (this is why it’s called the gambler’s “ruin” - because it’s very difficult to quit when you’re winning, you are doomed to go broke and this is one of the reasons the casinos win → they have virtually unlimited cash compared to you so it’s more likely for you to go broke before the casino goes broke, _even if the game is fair_)
 
 :::info Insight
 💡 From a gambler’s perspective, it makes sense to “set” (in his mind) $N$ to be smaller than $2\times k$ so that the probability of going broke is less than $0.5$ (which means he is more likey than not to reach $N$dollars and quit, hence making a profit).
@@ -176,7 +176,7 @@ How do we interpret this result:
 
 ### Expected Number of Games Played
 
-Recall that we’re trying to find out the average number of games the gambler will play before he reaches $N$ or $0$ (i.e,. before he “gets absorbed”).
+Recall that we’re trying to find out the average number of games the gambler will play before he reaches $N$ or $0$ (i.e., before he “gets absorbed”).
 
 That is, we are trying to find: $v_k= E[T|X_0=k]$.
 
@@ -278,7 +278,7 @@ How can we interpret this?
 
 - When $p > q$ (game is biased in our favor), and we start off with more money (i.e., higher $k$), we will play a fewer number of games (for a fixed $N$) → because we are more likely to reach the “winning state” (i.e., obtain $N$ dollars) quickly and we’ll just quit earlier.
 - Similarly, when $q > p$ (game is biased against us) and we start off with less money, we are likely to go broke quickly (and so, we will play fewer number of games).
-- Suppose we get greedy and abandon our stopping rule (i.e,. set $N$ to be very large):
+- Suppose we get greedy and abandon our stopping rule (i.e., set $N$ to be very large):
   - If $p > q$, the random walk diverges to infinity, i.e., it takes a very long time to stop the game
   - If $p < q$, $v_k \to \frac{k}{q-p}$ and so when the winning probability is less than 0.5, the expected time to converge is still finite.
 

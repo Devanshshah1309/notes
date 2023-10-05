@@ -17,7 +17,7 @@ $$
 where $a_i$ is our quantity of interest, and $g$ is a function from $S \to R$
 
 :::tip note
-Note that the probability $P(X_T=j|X_0=i)$ where $j$ is any absorbing state is also a special kind of expectation where we can define $g$ to be the indicator function $I_j$ which is “on” (1) when $X_T$ takes the value $j$ and “off” (0) otherwise, i.e,.
+Note that the probability $P(X_T=j|X_0=i)$ where $j$ is any absorbing state is also a special kind of expectation where we can define $g$ to be the indicator function $I_j$ which is “on” (1) when $X_T$ takes the value $j$ and “off” (0) otherwise, i.e.,
 
 $$
 P(X_T=j|X_0=i) = E[I_j(X_T=j)|X_0=i]

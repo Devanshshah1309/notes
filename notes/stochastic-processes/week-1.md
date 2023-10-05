@@ -246,7 +246,7 @@ $$
 Corr(X,Y) = \rho_{X,Y} = \frac{Cov(X,Y)}{\sqrt{Var(x)}\sqrt{Var(Y)}} = \frac{E[XY] - E[X]E[Y]}{\sqrt{E[X^2] - (E[X])^2}\sqrt{E[Y^2] - (E[Y])^2}}
 $$
 
-It is the “normalized” covariance, i.e,. correlation is always a number between $-1$ and $1$.
+It is the “normalized” covariance, i.e., correlation is always a number between $-1$ and $1$.
 
 **Independence**: The discrete RVs $X_1, \dots, X_n$ are independent if, and only if, _for any_ $x_1, \dots, x_n$, $P(X_1=x_1, \dots, X_n=x_n)= \prod_{i=1}^n P(X_i=x_i)$. In other words, independence is achieved when the joint distribution of the RVs is the product of the marginal distributions for all possible outcomes in the sample space.
 

@@ -282,7 +282,7 @@ Here, $T$ is the stopping time of the overall process → NOT the “extra” ti
 
 1. The probability of getting absorbed at a particular state $i$ given you’re a state $j$ ONLY depends on the state $j$ and not the time. (we’ve already proved this)
 2. The expected _remaining_ time before you get absorbed at state $i$ given you’re currently at state $j$ again only depends on the state $j$ and not the time (to be proved)
-3. As a consequence of (2), the expectation of the stopping time simply shifts by the amount of time passed since you last visited the state, i.e,. $E[T|X_k=i] = E[T|X_0=i] + k$
+3. As a consequence of (2), the expectation of the stopping time simply shifts by the amount of time passed since you last visited the state, i.e., $E[T|X_k=i] = E[T|X_0=i] + k$
 
 :::
 
