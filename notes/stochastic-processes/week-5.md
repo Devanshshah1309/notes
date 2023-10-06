@@ -550,3 +550,49 @@ $$
 Even when considering states in the same transient class as being the initial states, the long-run probabilities for entering the different absorbing classes will be different, so we cannot “merge” them (i.e., we cannot treat them to be the “same”). In other words, the probabilities for entering the different absorbing classes will be different depending on which transient state we start from, _even if the initial states from the same communication (transient) class_. Hence, the probability of entering the different absorption classes is a function of the _initial state_, NOT the _initial class_.
 
 :::
+
+### Gambler's Ruin with No Quitting
+
+Imagine a greedy gambler who doesn't set any quitting time for himself, i.e., he only stops playing when he goes broke. Then, we're interested to know the expected number of games he plays before going broke (or does he play "forever" with non-zero probability?). (More formally, we're interested in the limit as $N \to \infty$)
+
+Consider the symmetric case where $p = q = \frac{1}{2}$.
+
+Clearly, the communication classes are: $\{0\}$ and $\{1,2, \cdots\}$.
+
+Since 0 is an absorbing state, it must have $E[N_i] = \infty$ and it is recurrent (consider that there is a non-zero probability of getting absorbed starting from _any_ finite state).
+
+Now, consider $f_{11}$. Clearly, $f_{11} \leq q < 1$ (because once we go broke, we can never recover and hence, we can never revisit 1). This means that the communication class $\{1,2, \cdots\}$ is transient. Hence, $E[N_i] < \infty$ for all $i \geq 1$.
+
+But does this mean that the gambler is _certain_ to go broke? Can we argue that "since all other states are transient, they can only be visited a finite number of times (in expectation) and so, for a large enough $n$, the process has to leave these transient states and eventually the gambler will go broke?"
+
+The answer is no. Why? Although we have finite $E[N_i]$ for all $i \geq 1$, we have an _inifnite number of states_. So, the time the process can spend in this "transient" class can be infinity (we're summing an infinite series where each term itself is finite). Intuitively, the process can stay at every state for a short time and it will still have enough (inifnitely many!) remaining states it can visit in the transient class.
+
+Hence, although only $0$ has $E[N_0] = \infty$, it is possible that $E[T] = \infty$.
+
+Furthermore, when $p > q$, we have: $P(\text{going broke}) < 1$ (since the process "diverges" away from zero and wanders towards infinity in the long run). In other words, if the gambler is lucky (or is cheating), and he doesn't set any quitting rule for himself, then in the long run, we can expect him to have more and more money.
+
+Note that when $p \leq q$, the probabiilty of the gambler going broke (i.e., being ruined) is $1$ (you are guaranteed to go broke eventually). When $p > q$, the probability of the gambler going broke is $\frac{q}{p}$. A proof can be be found [here](https://math.stackexchange.com/questions/4775601/gamblers-ruin-in-the-limit-only-stopping-rule-ruin).
+
+**Summary of Gambler's Ruin with No Quitting Rule**
+
+The following results hold for _any_ finite initial state:
+
+1. If $p = q$,
+   - $P(\text{ruin}) = 1$
+   - $E[T] = \infty$
+2. If $p > q$,
+   - $P(\text{ruin}) = \frac{q}{p}$
+   - $E[T] = \infty$
+3. If $p < q$,
+   - $P(\text{ruin}) = 1$
+   - $E[T] < \infty$
+
+In words, we can express the above results as such:
+
+- If you're playing a fair game, you're guaranteed to go broke eventually (_and_ in expectation you'll have to play forever to go broke). These two results may feel "contradictory" and "counter-intuitive" but are nevertheless both true.
+- If you're playing a game where the odds are in your favor, you'll be playing an infinite number of games. Why? Because on average, you gain $p - (1-p) = 2p -1 > 0$ dollars on every bet. So, in the long-run, you're moving in the positive direction (away from the "broke" state, and towards "infinite money") and there's no absorbing state on that "end" (i.e., there is no end). Given infinite time, you'll be playing an infinite number of games (and you'll be making an infinite amount of money).
+- If the odds are against you, the expected loss per bet is $(1-p) - p = 1 - 2p$ and so, in expectation, you'll go broke within a finite number of steps (you have a finite amount of money and you lose a finite amount of money on average per bet, then obviously you're moving towards "broke" state in every round). More precisely, if you start with $k$ dollars, you're expected to go broke in $\frac{k}{1-2p}$ steps. And the probability of going broke is $1$.
+
+:::info
+For a more rigorous treatment, you can refer to [this](https://web.mit.edu/neboat/Public/6.042/randomwalks.pdf).
+:::
