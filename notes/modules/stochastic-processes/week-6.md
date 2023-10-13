@@ -336,7 +336,9 @@ Note:
 - We have $|S|$ unknown parameters: $\pi_1, \dots, \pi_{|S|}$
 - The rank of $I - P$ is $< |S|$ since all the rows sum up to 1 (since it needs to form a valid probability distribution, the sum of all the probabilities of outgoing edges/steps needs to be 1) → recall that rank is the number of linearly independent columns but in this case, if we know the first $|S|-1$ columns (worst case), we can find the last column by simply subtracting 1 from the partial sum of each row. Moreover, it’s possible that the rank of the matrix be even lower than $|S|-1$ (consider the extreme case where all values in the first column are 1, then everything else is forced to be 0, and so, there is only 1 linearly independent column).
 
-We know (from linear algebra) that for such a linear system (where the “coefficient” matrix is non-invertible - because the rank is not equal to the number of rows), there can be no solution (inconsistent) or infinitely many solutions (consistent but dependent).
+We know (from linear algebra) that for such a linear system (where the “coefficient” matrix is non-invertible - because the rank is not equal to the number of rows), there can be no solution (inconsistent) or infinitely many solutions (consistent but dependent). BUT **this does NOT mean that there can only be "no solution" or "infinitely many solutions" to our system of equations** _because_ we have an additional equation (i.e., additional constraint) that $\sum_{i=1}^n \pi_i = 1$. So, even if the rank of $I - P$ is less than $|S|$, we can still have a unique solution (because of the additional constraint). Moreover, it can be shown that any transition probability matrix has at least one stationary distribution (which is a solution to the system of equations). So, the "no solution" case is impossible for our system of equations.
+
+In fact, the rank of $I - P$ will _always_ be less than $|S|$ (for both regular and irregular markov chains) simply because every row must sum to 1 (to be able to form a valid probability distribution). Hence, we _may_ have a unique solution only when the rank of $I - P$ is $|S|-1$ (because then we would get $|S|-1$ linearly independent equations from $P$ and 1 more from the $\sum_{i=1}^n \pi_i = 1$ constraint, forming a total of $|S|$ linearly independent equations and $|S|$ variables).
 
 When the MC is not regular, it’s possible that $|S| = \infty$ and $\pi_i = 0$ for all $i$ (which means that all the states are transient).
 
@@ -355,6 +357,12 @@ $$
 
 **Note that if the initial distribution of $X_0$ is not $\pi$, we cannot claim any results.**
 
+:::
+
+It is possible for an irregular stochastic process to have a _unique_ stationary distribution too! The uniqueness of a solution to the linear system of equations does not mean that it is the limiting distribution.
+
+:::tip note
+Any stochastic process has at least one stationary distribution $\pi$ in the sense that $\pi P = \pi$. The proof can be found [here](https://math.stackexchange.com/questions/119891/finite-state-markov-chain-stationary-distribution).
 :::
 
 Though limiting distribution and stationary distribution are “similar” in some sense, they don’t refer to the same thing mathematically (or even conceptually):
