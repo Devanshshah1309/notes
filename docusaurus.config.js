@@ -8,7 +8,7 @@ const katex = require("rehype-katex");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Public Knowledge Repository",
+  title: "Knowledge Repository",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -86,7 +86,7 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "Public Knowledge Repository",
+        title: "Knowledge Repository",
         logo: {
           alt: "My Site Logo",
           src: "img/logo.svg",

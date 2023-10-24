@@ -15,11 +15,22 @@ function HomepageHeader() {
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
-              to="/notes/intro"
+              to="/notes/category/modules/"
             >
               View Notes
             </Link>
           </div>
+          <h2 className={"hero__subtitle " + styles.pad}>
+            A{" "}
+            <i>
+              <u>community-driven</u>
+            </i>{" "}
+            <i>
+              <u>open-source</u>
+            </i>{" "}
+            hub of knowledge where students collaboratively contribute, curate,
+            and expand their collective wisdom.
+          </h2>
         </div>
       </header>
       <center style={{ padding: "2rem" }}>
@@ -42,7 +53,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Public Knowledge Repository of Notes for University Courses"
+      description="Knowledge Repository of Notes for University Courses"
     >
       <HomepageHeader />
     </Layout>
