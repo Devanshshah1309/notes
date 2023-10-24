@@ -428,7 +428,7 @@ $$
 Var(Y) &= Var(\sum_{i=1}^N X_i) \\
 &= E[Var(\sum_{i=1}^NX_i|N)] + Var(E[\sum_{i=1}^NX_i|N]) \\
 &= E[N\sigma^2] + Var(N\mu) \\
-&= \sigma^2E[N]+\mu Var(N)
+&= \sigma^2E[N]+\mu^2 Var(N)
 \end{split}
 \end{equation*}
 $$
