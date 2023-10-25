@@ -10,7 +10,7 @@ Stochastic processes deal with modeling a series of actions/steps (with a certai
 
 **Proeess**: a series of actions or steps in order to achieve a particular end.
 
-**Stochastic**: we have some randomness (i.e., uncertainty - which is measured using probabiilty) in each action of this process. e.g. in the snakes and ladder game, we don’t know how many steps we should walk for each action, and the final path is not definite (in fact, we don’t even know how many steps we need to take - if we’re unlucky, we might not reach the goal even after taking 1000 steps.
+**Stochastic**: we have some randomness (i.e., uncertainty - which is measured using probabiilty) in each action of this process. e.g. in the snakes and ladder game, we don’t know how many steps we should walk for each action, and the final path is not definite (in fact, we don’t even know how many steps we need to take - if we’re unlucky, we might not reach the goal even after taking 1000 steps).
 
 :::info
 However, we can say that the probability that we evenutally reach the final square (100) in the snakes and ladder game approaches 1 as we play for a longer time. In other words, we are ["almost sure"](https://en.wikipedia.org/wiki/Almost_surely) to reach the final square in the long run. This is an example of a "convergence" property of stochastic processes.
@@ -396,7 +396,7 @@ Proof (to show that $Var(X) = E[Var(X|Y)] + Var(E[X|Y])$:
 
 9. Hence, proved.
 
-### **Random Sum**
+### Random Sum
 
 Random sum is a classic example to test understanding of conditional expectation, conditional variance and MGF.
 
