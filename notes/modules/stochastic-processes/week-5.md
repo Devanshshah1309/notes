@@ -166,7 +166,7 @@ Naturally, $f_{ii}^{(n)} \leq P_{ii}^{(n)}$ (since $f_{ii}^{(n)}$ only includes 
 :::tip note
 When does the equality hold? That is, when is $\sum_{n=1}^\infty f_{ii}^{(n)} = 1$?
 
-Intuitively, this means that in the long run, the process always comes back to $1$, i.e., ALL paths eventually lead to $1$
+Intuitively, this means that in the long run, the process always comes back to $i$ at least once. We are guaranteed that there is at least one revisit to $i$ in the future.
 
 :::
 

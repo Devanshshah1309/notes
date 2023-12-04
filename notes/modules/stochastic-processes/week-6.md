@@ -225,7 +225,7 @@ Note:
 
 Okay, but how do we _really_ interpret $\pi_j$? There are many different (and all correct) interpretations of $\pi$ (depending on what we’re considering).
 
-$**\pi_j$ is the (marginal) probability that the MC is in state $j$ for the long run. We say “marginal” because it is not conditioned on the original/initial state and also not conditioned on the time (exact value of $n$). It simply means that if we leave the MC alone for a long time, and then come back to observe it, there is a $\pi_j$ probability that the MC is in state $j$ when we observe it, regardless of how it was when we left, and regardless of the exact number of steps the MC took in the time we were gone.
+**$\pi_j$ is the (marginal) probability that the MC is in state $j$ for the long run.** We say “marginal” because it is not conditioned on the original/initial state and also not conditioned on the time (exact value of $n$). It simply means that if we leave the MC alone for a long time, and then come back to observe it, there is a $\pi_j$ probability that the MC is in state $j$ when we observe it, regardless of how it was when we left, and regardless of the exact number of steps the MC took in the time we were gone.
 
 :::tip intuition
 An intuitive way to look at this is to see if there is any “difference” in times even in the long run. For example, for the simple random walk problem: If we start from an even state, the probability that the process is at an odd state is $0$ at even time points, and the probability that the process is at an even state is at odd time points (_even in the long run_). So, the long-run distribution depends on the time point we’re considering. Hence, it’s not a regular MC because there’s no “limiting distribution”.
@@ -269,7 +269,7 @@ $$
 
 Every row is the same, as $\pi$. Interpretation? The $i$th row of $P^n$ is the distribution of $X_n$ given $X_0=i$. If the distribution of $X_n$ converges to the same distribution $\pi$ regardless of $X_0$, then every row must converge to $\pi$.
 
-$\pi$ can be seen as the long run proportion of time in every state. But what do we even mean by “long run proportion of time”. Let’s define it formally.
+**$\pi$ can be seen as the long run proportion of time in every state.** But what do we even mean by “long run proportion of time”. Let’s define it formally.
 
 Define the indicator function of $X_k$ to be:
 
@@ -299,7 +299,7 @@ $$
 
 The above steps use the following properties:
 
-- The expectations of the usm sum of random variables is equal to the sum of their respective expectations
+- Linearity of Expectation: The expectations of the sum of random variables is equal to the sum of their respective expectations
 - The expectation of an indicator function is equal to the probability that the indicator function evaluates to 1
 - As $m \to \infty$, $P(X_m=j|X_0=i) \approx P(X_m=j) = \pi_j$. So, as $m$ increases, the “effect” of the first few iterations of the markov chain (where it’s not really “long-run” yet) become less relevant (as there are many many more terms that dominate the effect of the first few terms), and the average tends to converge to $\pi_j$.
 
