@@ -6,7 +6,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
+  --ifm-color-primary: #2f58cd;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
@@ -15,11 +15,16 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --admonition-danger-bg-color: lightcoral;
+  --admonition-tip-bg-color: lightgreen;
+  --admonition-info-bg-color: lightblue;
+  --admonition-note-bg-color: cyan;
+  --admonition-caution-bg-color: lightyellow;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary: #b6eada;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
@@ -27,4 +32,29 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --admonition-danger-bg-color: darkred;
+  --admonition-tip-bg-color: darkgreen;
+  --admonition-info-bg-color: darkblue;
+  --admonition-note-bg-color: darkcyan;
+  --admonition-caution-bg-color: darkorange;
+}
+
+.theme-admonition-danger {
+  background-color: var(--admonition-danger-bg-color);
+}
+
+.theme-admonition-tip {
+  background-color: var(--admonition-tip-bg-color);
+}
+
+.theme-admonition-info {
+  background-color: var(--admonition-info-bg-color);
+}
+
+.theme-admonition-note {
+  background-color: var(--admonition-note-bg-color);
+}
+
+.theme-admonition-caution {
+  background-color: var(--admonition-caution-bg-color);
 }
