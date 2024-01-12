@@ -42,17 +42,18 @@ There are 3 kinds of analysis **depending on how the inputs are fed to the algor
 
 :::info important
 
-1. **Worst case: $T(n)$ = maximum number of instructions of an algorithm on any input of size $n$ (we assume that an adversary will try to find the worst possible input for our program such that it takes the longest time)**
-2. **Average case: $T(n)$ = expected number of instructions of an algorithm over all inputs of size $n$. We need some assumption of statistical distribution of inputs to calculate this properly.**
-3. **Best case: $T(n)$ = minimum number of instructions of an algorithm on an input of size $n$ (we can just cheat with some naive slow algorithm that works fast on some input)**
-   :::
+1. **Worst case: $T(n)$** = maximum number of instructions of an algorithm on any input of size $n$ (we assume that an adversary will try to find the worst possible input for our program such that it takes the longest time)
+2. **Average case: $T(n)$** = expected number of instructions of an algorithm over all inputs of size $n$. We need some assumption of statistical distribution of inputs to calculate this properly.
+3. **Best case: $T(n)$** = minimum number of instructions of an algorithm on an input of size $n$ (we can just cheat with some naive slow algorithm that works fast on some input)
+
+:::
 
 Example: worst case of bubble sort (reverse array) is $\approx n^2$ instructions, while best case of bubble sort is $\approx n$ instructions (already sorted array).
 
 Example: Best case, worst case, average case of merge sort is $\approx nlogn$ instructions.
 
 :::note note
-Note that there is no indeterminism in the algorithm itself for average-case analysis, the uncertainty lies in the input, NOT the algorithm. This is different from expected time complexity for randomised algorithms where the expectation is over the statistical distribution of randomness internal to the algorithm/program.
+Note that there is no indeterminism in the algorithm itself for average-case analysis. The uncertainty lies in the input, NOT the algorithm. This is different from expected time complexity for randomised algorithms where the expectation is over the statistical distribution of randomness internal to the algorithm/program.
 :::
 
 ### Comparing Efficiency
@@ -122,8 +123,6 @@ We prove the first one using the epsilon-delta definition of limits:
    - Hence, for all $c > 0$, there exists $n_0 > 0$ such that $f(n) < cg(n)$ for $n > n_0$.
    - So, by definition, $f(n) \in o(g(n))$
 
-### Other Important Results
-
 ### Other Important Properties
 
 **Transitivity**
@@ -157,7 +156,7 @@ In particular, note that $f(n) \neq o(f(n))$ and $f(n) \neq \omega(f(n))$ becaus
 
 ### Useful Mathematical Facts
 
-**Properties of logarithms and exponents:**
+#### Properties of logarithms and exponents
 
 1. $a^x = m \iff x = log_a (m)$ → definition of logarithm
 2. $log_a (mn) = log_a (m) + log_a (n)$ → product property
@@ -176,56 +175,54 @@ In particular, note that $f(n) \neq o(f(n))$ and $f(n) \neq \omega(f(n))$ becaus
 15. $(a^m)^n = a^{mn}$
 16. $(ab)^m = a^mb^m$
 
-**Common Series and their Sums:**
+**Artithmetic series:**
 
 $$
-1 + 2 + 3  + ...  + n = \dfrac{n(n+1)}{2} = O(n^2)
-$$
-
-The above arithmetic progression can appear in various different forms. The more general form is:
-
-$$a + (a + d) + (a + 2d) + \dots + a + (n-1)d = \dfrac{n}{2}(2a + (n-1)\times d) = \dfrac{n}{2}(a + l)$$
-
-, where $l$ is the last term of the series and $n$ is the number of terms.
-
-$$
-1^2 + 2^2 + 3^2 + ...  + n^2 = \dfrac{n(n+1)(2n+1)}{6} = O(n^3)
+a + (a + d) + (a + 2d) + \dots + (a + (n-1)d) = \dfrac{n}{2}(2a + (n-1)d)
 $$
 
 $$
-1^3 + 2^3 + \dots + n^3 = \left(\dfrac{n(n+1)}{2} \right)^2 = O(n^4)
+1 + 2 + 3 + \dots + n = \dfrac{n(n+1)}{2} = \Theta(n^2)
+$$
+
+**Geometric series**:
+
+$$
+a + ar + ar^2 + \dots ar^{n-1} = \dfrac{a(r^n - 1)}{r -1}
 $$
 
 $$
-1 + r + r^2 + r^3 + .... = \dfrac{1}{1-r} \quad for\  |r| < 1
+a + ar + ar^2 + \cdots = \frac{a}{1 - r} \quad \text{if } |r| < 1
 $$
 
-More generally, the solution to the geometric progression $a + ar + ar^2 + \dots + ar^{n-1} = \dfrac{a(r^n - 1)}{r-1}$
+**Sum of Squares:**
 
 $$
-\dfrac{1}{1} + \dfrac{1}{2} + \dfrac{1}{3} + \dots + \dfrac{1}{n} = O(logn)
+1^2 + 2^2 + \dots + n^2 = \dfrac{n(n+1)(2n + 1)}{6} = \Theta(n^3)
 $$
 
-The above series (called the harmonic series) is divergent but the sum of $n$ terms is upper bounded by $O(logn)$. This is because:
+**Sum of Cubes:**
 
 $$
-\sum_{n = 1}^{k} \dfrac{1}{n} > \int_1^{k+1} \dfrac{1}{x}dx = ln(k+1)
+1^3 + 2^3 + 3^3 + \dots + n^3 = \left(\dfrac{n(n+1)}{2}\right)^2 = \Theta(n^4)
 $$
 
-It is easy to view the bound in terms of the graphs.
+**Harmonic Series:**
 
 $$
-1 + 2 + 4 + 8 + 16 + \dots + 2^m = 2^{m + 1} - 1 = O(2^m)
+\dfrac{1}{1} + \dfrac{1}{2} + \dfrac{1}{3} + \dots + \dfrac{1}{n} = \Theta(\log n)
 $$
 
-$$
-1 + 2 + 4 + 8 + 16 + \dots + m = 2m - 1 = O(m)
-$$
-
-The following result is also very useful (e.g. for deriving the time complexity of `heapify`)
+**Sterling’s approximation: $(\frac n e )^n \leq n! \leq n^n$**
 
 $$
-\sum_{i = 1}^{\infty} \dfrac{i}{2^i} = \dfrac{1}{2} + \dfrac{2}{4} + \dfrac{3}{8} + \dots = 2
+\log1 + \log2 + \log3 + \dots + \log n = \Theta(n\log n)
+$$
+
+**Other important series:**
+
+$$
+\dfrac{1}{2^1} + \dfrac{2}{2^2} + \dfrac{3}{2^3} + \dots + \dfrac{n}{2^n} \leq \sum_{i=1}^\infty \dfrac{i}{2^i} = 2 = O(1)
 $$
 
 ### Proof of $\Theta(g(n)) = O(g(n)) \cap \Omega(g(n))$

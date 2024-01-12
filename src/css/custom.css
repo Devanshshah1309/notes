@@ -58,3 +58,7 @@
 .theme-admonition-caution {
   background-color: var(--admonition-caution-bg-color);
 }
+
+code {
+  color: var(--ifm-color-primary);
+}
