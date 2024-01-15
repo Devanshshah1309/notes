@@ -116,7 +116,7 @@ It is basically a generalization of counting sort. Instead of sorting the elemen
 :::tip think
 Q. Why can’t we sort from most significant bit to least significant bit instead?
 
-Ans: We can, but then we would ahve to keep track of which groups are placed together so we can recursively perform radix sort using the next most significant bit. It’s just more convenient and easier to implement if we start sorting from LSB.
+Ans: We can, but then we would have to keep track of which groups are placed together so we can recursively perform radix sort using the next most significant bit. It’s just more convenient and easier to implement if we start sorting from LSB.
 :::
 
 :::tip think
