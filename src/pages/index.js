@@ -20,17 +20,6 @@ function HomepageHeader() {
               View Notes
             </Link>
           </div>
-          <h2 className={"hero__subtitle " + styles.pad}>
-            A{" "}
-            <i>
-              <u>community-driven</u>
-            </i>{" "}
-            <i>
-              <u>open-source</u>
-            </i>{" "}
-            hub of knowledge where students collaboratively contribute, curate,
-            and expand their collective wisdom.
-          </h2>
         </div>
       </header>
       <center style={{ padding: "2rem" }}>
@@ -53,7 +42,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Knowledge Repository of Notes for University Courses"
+      description="NUS Module Notes of Notes for University Courses"
     >
       <HomepageHeader />
     </Layout>
